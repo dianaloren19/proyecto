@@ -7,6 +7,7 @@ package com.proyectouno.proyecto.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 //Represnta el modelo de dominio del negocio,tablas de la BD, documentos
 @Document(collection = "student")
 public class Student {
@@ -14,50 +15,55 @@ public class Student {
     @Id
     private String id;
     private String name;
-    private String description;
+    private String apellido;
     private boolean attend;
 
     // Constructor de la clase
     public Student() {
     }
 
-    public boolean isAttend() {
-        return attend;
-    }
-
-    public void setAttend(boolean attend) {
-        this.attend = attend;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     // Sobre escribir el constructor
     // Inyeccion inicializar unos valores es sinonimo de instanciar una clase
-    public Student(String name, String description, boolean attend) {
-        this.setName(name);
-        this.setDescription(description);
-        this.setAttend(attend);
+    public Student(String name, String apellido, boolean attend) {
+        this.name=name;
+        this.apellido=apellido;
+        this.attend=attend;
         
     }
     //Metodo publico que expone un atributo privado a otro componente
     public String getId(){
         return id;
     }
-    public void setId(String id){
-        this.id= id;
+     public String getApellido() {
+        return apellido;
     }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public boolean isattend() {
+        return attend;
+    }
+
+    public void setattend(boolean attend) {
+        this.attend = attend;
+    }
+
+    public String getname() {
+        return name;
+    }
+
+    public void setname(String name) {
+        this.name = name;
+    }
+
+    //Retornar los valores en una cadena de textocomo json
+    @Override
+    public String toString() {
+        return "Student [id=" +id+",name"+name+", desc=" + apellido + ", attend=" +attend +"]"; 
+    }
+
+
+   
 }
